@@ -12,7 +12,6 @@ import (
 
 const (
 	target = ":50051"
-	connections = 3
 )
 
 func pingflood(counter *int) {
@@ -51,9 +50,7 @@ func main() {
 	signal.Notify(quit, os.Interrupt)
 	counter := 0
 
-	for i := 0; i < connections; i++ {
-		go pingflood(&counter)
-	}
+	go pingflood(&counter)
 	go showCount(&counter)
 	<-quit
 
