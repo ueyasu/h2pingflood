@@ -31,6 +31,7 @@ func pingflood(counter *int) {
 			if e != nil {
 				// fmt.Println(e)
 				// fmt.Println("reconnect...")
+				tc.Close()
 				break
 			}
 			*counter++
